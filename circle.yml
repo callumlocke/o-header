@@ -10,5 +10,12 @@ dependencies:
     - "node_modules"
 test:
   override:
-    - obt test
-    - obt verify
+    #- obt test
+    #- obt verify
+    - obt demo
+    - './node_modules/.bin/http-server':
+        background: true
+    - sleep 5
+    - curl -I http://localhost:8080/
+    - curl -I http://localhost:8080/demos/local/header.html
+    # - ./node_modules/.bin/pa11y http://localhost:8080/demos/local/header.html
